@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect - Smart College Networking</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #CBD5E0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="bi bi-buildings-fill text-2xl"></i>
+                    <h1 class="text-xl font-bold">CampusConnect</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="hover:text-blue-200">Home</a>
+                    <a href="#events" class="hover:text-blue-200">Events</a>
+                    <a href="#feedback" class="hover:text-blue-200">Feedback</a>
+                    <a href="#projects" class="hover:text-blue-200">Projects</a>
+                    <button id="profileBtn" class="bg-white text-blue-600 px-4 py-2 rounded-full hover:bg-blue-50">
+                        <i class="bi bi-person-circle"></i> Profile
+                    </button>
+                </div>
+                <button class="md:hidden" id="menuBtn">
+                    <i class="bi bi-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-blue-500 text-white">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex flex-col space-y-2">
+                <a href="#home" class="py-2 hover:bg-blue-600 px-2 rounded">Home</a>
+                <a href="#events" class="py-2 hover:bg-blue-600 px-2 rounded">Events</a>
+                <a href="#feedback" class="py-2 hover:bg-blue-600 px-2 rounded">Feedback</a>
+                <a href="#projects" class="py-2 hover:bg-blue-600 px-2 rounded">Projects</a>
+                <a href="#profile" class="py-2 hover:bg-blue-600 px-2 rounded">Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Match Suggestions -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Suggested Matches</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="bi bi-person text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Sarah Chen</h3>
+                            <p class="text-sm text-gray-600">Computer Science, Year 3</p>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <p class="text-sm text-gray-500">Skills: Python, AI/ML, Web Development</p>
+                        <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">
+                            Connect
+                        </button>
+                    </div>
+                </div>
+                <!-- More match cards... -->
+            </div>
+        </section>
+
+        <!-- Event Tracker -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Upcoming Events</h2>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex flex-col space-y-4">
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                        <div>
+                            <h3 class="font-semibold">Tech Hackathon 2024</h3>
+                            <p class="text-sm text-gray-600">Tomorrow, 9:00 AM - Main Hall</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">
+                            RSVP
+                        </button>
+                    </div>
+                    <!-- More events... -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback System -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Anonymous Feedback</h2>
+            <div class="bg-white rounded-lg shadow p-4">
+                <form id="feedbackForm" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Category</label>
+                        <select class="w-full p-2 border rounded" required>
+                            <option value="">Select category</option>
+                            <option value="faculty">Faculty</option>
+                            <option value="course">Course</option>
+                            <option value="facilities">Facilities</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Your Feedback</label>
+                        <textarea class="w-full p-2 border rounded h-32" required 
+                                placeholder="Share your thoughts..."></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
+                        Submit Feedback
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Project Idea Generator -->
+        <section>
+            <h2 class="text-2xl font-bold mb-4">AI Project Generator</h2>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="space-y-4">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm">Web Development</button>
+                        <button class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm">Machine Learning</button>
+                        <button class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm">Mobile Apps</button>
+                        <button class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm">IoT</button>
+                    </div>
+                    <button id="generateBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
+                        Generate Project Idea
+                    </button>
+                    <div id="ideaResult" class="hidden p-4 bg-gray-50 rounded-lg">
+                        <h3 class="font-semibold mb-2">Generated Idea:</h3>
+                        <p class="text-gray-700">Your AI-generated project idea will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Feedback Form
+        const feedbackForm = document.getElementById('feedbackForm');
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Feedback submitted anonymously!');
+            feedbackForm.reset();
+        });
+
+        // Project Idea Generator
+        const generateBtn = document.getElementById('generateBtn');
+        const ideaResult = document.getElementById('ideaResult');
+        const projectIdeas = [
+            "Smart Campus Navigation System using IoT sensors",
+            "AI-powered Study Group Matcher",
+            "Blockchain-based Academic Credential Verification",
+            "AR Campus Tour Guide Application",
+            "Student Wellness Tracking Platform"
+        ];
+
+        generateBtn.addEventListener('click', () => {
+            ideaResult.classList.remove('hidden');
+            const randomIdea = projectIdeas[Math.floor(Math.random() * projectIdeas.length)];
+            ideaResult.querySelector('p').textContent = randomIdea;
+        });
+
+        // Dynamic Event Creation
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.trim() === 'RSVP') {
+                button.addEventListener('click', function() {
+                    this.textContent = 'Registered';
+                    this.classList.remove('bg-blue-600');
+                    this.classList.add('bg-green-600');
+                });
+            }
+        });
+
+        // Connect Button Functionality
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.trim() === 'Connect') {
+                button.addEventListener('click', function() {
+                    this.textContent = 'Connected';
+                    this.classList.remove('bg-blue-600');
+                    this.classList.add('bg-green-600');
+                });
+            }
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
